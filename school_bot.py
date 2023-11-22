@@ -86,12 +86,19 @@ async def process_start_command(message: types.Message):
         del_figi(command)
     elif command[0] == 'task':
         if message.from_user.id in np.array(df['id']):
+            print('here')
             answ = np.array(df[df['id'] == message.from_user.id]['answ'])
             if '--' in answ:
+                print('here1')
                 await bot.send_message(message.from_user.id, 'Вы не решили задание')
             else:
+                print('here2')
                 list = os.listdir('./school/')
+                # path = '   '
+                # while path[-3:] != 'png':
                 path = f'./school/{list[random.randrange(len(list))]}'
+                print(path)
+                print('here')
                 await bot.send_photo(message.from_user.id,photo=open(path, 'rb'))
                 df.loc[len(df)] = [message.from_user.id,'name',path,'--']
                 df.to_csv(f'./{df_name}')
