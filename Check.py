@@ -19,6 +19,4 @@ while True:
         df = pd.read_csv(f'./{csv_files[int(file)]}')
         print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
         for name in np.unique(np.array(df['name'])):
-    
             print(df[df['name']==name])
-#Булдакова4
