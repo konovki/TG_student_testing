@@ -35,6 +35,7 @@ async def process_start_command(message: types.Message):
                 await bot.send_photo(message.from_user.id,photo=open(path, 'rb'))
                 df.loc[len(df)] = [message.from_user.id,'name',path,'--']
                 df.to_csv(f'./{df_name}')
+
         else:
             list = os.listdir('./school/')
             path = f'./school/{list[random.randrange(len(list))]}'
